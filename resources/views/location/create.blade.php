@@ -9,18 +9,22 @@
         <div class="col-md-3"></div>
 
         <div class="col-md-6">
-            <form>
+
+            @include('partials.errorslist')
+
+            <form method="post" action="{{ action('LocationController@store') }}">
+                {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">Název:</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Jak se toto místo jmenuje?">
                 </div>
                 <div class="form-group">
-                    <label for="location">Lokace:</label>
+                    <label for="location">Umístění:</label>
                     <input type="text" class="form-control" id="location" name="location" placeholder="Kde se toto místo nachází? Např. vedle kašny.">
                 </div>
                 <div class="form-group">
                     <label for="latitude">Zeměpisná šířka:</label>
-                    <input type="text" class="form-control" id="latitude" name="longitude" placeholder="Tato informace je nutná pro správné umístění bodu na mapě.">
+                    <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Tato informace je nutná pro správné umístění bodu na mapě.">
                 </div>
                 <div class="form-group">
                     <label for="longitude">Zeměpisná délka:</label>
@@ -37,6 +41,10 @@
                 <div class="form-group">
                     <label for="website">Webová stránka:</label>
                     <input type="text" class="form-control" id="website" name="website" placeholder="Zadejte webovou stránku tohoto místa, pokud existuje.">
+                </div>
+                <div class="form-group">
+                    <label for="working_hours">Pracovní doba:</label>
+                    <textarea class="form-control" id="working_hours" name="working_hours" placeholder="Zadejte prosím pracovní dobu pracovny, pobočky, prodejny či kanceláře."></textarea>
                 </div>
                 <div class="form-group">
                     <label for="description">Popis:</label>
