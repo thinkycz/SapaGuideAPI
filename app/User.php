@@ -39,6 +39,6 @@ class User extends Model implements AuthenticatableContract,
 
     public function location()
     {
-        return $this->hasMany('locations');
+        return $this->hasMany('App\Location');
     }
 }

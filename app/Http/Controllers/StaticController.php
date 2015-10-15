@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -37,5 +38,12 @@ class StaticController extends Controller
     public function aboutPage()
     {
         return view('static.about');
+    }
+
+    public function myAccountPage()
+    {
+        Carbon::setLocale('cs');
+
+        return view('static.account');
     }
 }

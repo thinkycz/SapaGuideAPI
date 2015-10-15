@@ -20,4 +20,19 @@ class Location extends Model
         'category_id',
         'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function catagory()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
+    public function logo()
+    {
+        return $this->belongsTo('App\Image', 'logo_id');
+    }
 }

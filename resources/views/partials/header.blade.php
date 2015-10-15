@@ -18,9 +18,15 @@
                 <li class="{{ Request::url() == action('StaticController@downloadPage') ? "active" : ""}}">
                     <a href="{{ action('StaticController@downloadPage') }}" accesskey="4" title="">Stažení aplikace</a>
                 </li>
-                <li class="{{ Request::url() == action('Auth\AuthController@getLogin') ? "active" : ""}}">
-                    <a href="{{ action('Auth\AuthController@getLogin') }}" accesskey="5" title="">Přihlášení</a>
-                </li>
+                @if(Auth::guest())
+                    <li class="{{ Request::url() == action('Auth\AuthController@getLogin') ? "active" : ""}}">
+                        <a href="{{ action('Auth\AuthController@getLogin') }}" accesskey="5" title="">Přihlášení</a>
+                    </li>
+                @else
+                    <li class="{{ Request::url() == action('StaticController@myAccountPage') ? "active" : ""}}">
+                        <a href="{{ action('StaticController@myAccountPage') }}" accesskey="5" title="">Můj účet ({{ Auth::getUser()->name }})</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

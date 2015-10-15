@@ -25,6 +25,7 @@ class CreateLocationsTable extends Migration
             $table->string('website');
             $table->text('description');
             $table->text('working_hours');
+            $table->integer('approved')->default(0);
 
             $table->unsignedInteger('logo_id')->nullable();
             //$table->foreign('logo_id')->references('id')->on('images')->onDelete('set null');

@@ -12,12 +12,12 @@
 
             @include('partials.errorslist')
 
-            <form method="POST" action="{{ action('Auth\AuthController@postLogin') }}">
+            <form method="POST" action="{{ action('Auth\AuthController@postRegister') }}">
                 {!! csrf_field() !!}
 
                 <div class="form-group">
                     <label for="name">Jméno</label>
-                    <input type="name" name="name" value="{{ old('name') }}" class="form-control">
+                    <input type="text" name="name" value="{{ old('name') }}" class="form-control">
                 </div>
 
                 <div class="form-group">
@@ -31,8 +31,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="confirm">Ověření hesla</label>
-                    <input type="confirm" name="confirm" id="confirm" class="form-control">
+                    <label for="password_confirmation">Ověření hesla</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
                 </div>
 
                 <br>

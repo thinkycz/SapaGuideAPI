@@ -17,6 +17,7 @@
 Route::get('/', 'StaticController@indexPage');
 Route::get('/download', 'StaticController@downloadPage');
 Route::get('/about', 'StaticController@aboutPage');
+Route::get('/account', 'StaticController@myAccountPage');
 
 /**
  * Locations
