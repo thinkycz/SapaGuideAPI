@@ -22,6 +22,7 @@ Route::get('/account', 'StaticController@myAccountPage');
 /**
  * Locations
  */
+Route::get('/location/create2', 'LocationController@create2');
 Route::resource('/location', 'LocationController');
 
 /**

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class AddLocationFormRequest extends Request
+class AddLocationStep2FormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,8 @@ class AddLocationFormRequest extends Request
     public function rules()
     {
         return [
-            'title'     => 'required',
-            'latitude'  => 'required|numeric',
-            'longitude' => 'required|numeric',
+            'email'     => 'email',
+            'website'   => 'url',
         ];
     }
 }

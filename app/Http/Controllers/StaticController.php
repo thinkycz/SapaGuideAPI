@@ -42,6 +42,11 @@ class StaticController extends Controller
 
     public function myAccountPage()
     {
+        if(\Auth::guest())
+        {
+            return redirect(action('Auth\AuthController@getLogin'));
+        }
+
         Carbon::setLocale('cs');
 
         return view('static.account');
