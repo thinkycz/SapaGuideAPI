@@ -25,7 +25,7 @@ class Flash
         return $this->make($title, $text, 'success');
     }
 
-    public function warining($title, $text)
+    public function warning($title, $text)
     {
         return $this->make($title, $text, 'warning');
     }

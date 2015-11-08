@@ -25,9 +25,9 @@ class AddLocationFormRequest extends Request
     public function rules()
     {
         return [
-            'title'     => 'required',
-            'latitude'  => 'required|numeric',
-            'longitude' => 'required|numeric',
+            'title'     => 'required|min:5',
+            'latitude'  => 'required|numeric|between:48,51',
+            'longitude' => 'required|numeric|between:12,19',
         ];
     }
 }

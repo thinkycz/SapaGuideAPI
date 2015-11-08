@@ -6,9 +6,11 @@
 
         <h2 class="main-title">Katalog lokací</h2>
 
-        <div class="section-menu">
-            <a href="{{ action('LocationController@create') }}" title="">Přidat lokaci</a>
-        </div>
+        @if(Auth::check())
+            <div class="section-menu">
+                <a href="{{ action('LocationController@create') }}" title="Přidat záznam" class="btn btn-primary">Přidat záznam</a>
+            </div>
+        @endif
 
         <div class="col-md-3"></div>
 
@@ -31,8 +33,8 @@
                     <tbody>
                     @foreach($locations as $location)
                         <tr>
-                            <td><a href="{{ action('LocationController@show', [$location->id]) }}">{{ $location->id }}</a></td>
-                            <td><a href="{{ action('LocationController@show', [$location->id]) }}">{{ $location->title }}</a></td>
+                            <td><a href="{{ action('LocationController@show', [$location->slug]) }}">{{ $location->id }}</a></td>
+                            <td><a href="{{ action('LocationController@show', [$location->slug]) }}">{{ $location->title }}</a></td>
                             <td>{{ $location->user->name }}</td>
                             <td>{{ $location->created_at->diffForHumans() }}</td>
                         </tr>

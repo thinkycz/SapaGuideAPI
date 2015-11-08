@@ -10,19 +10,31 @@
 
         <div class="col-md-6">
 
+            <div class="row text-center">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 col-sm-12">
+                    <a href="{{ action('Auth\OAuthController@redirectToFacebook') }}" class="btn btn-block btn-social btn-facebook social-btn">
+                        <i class="fa fa-facebook"></i> Přihlásit se pomocí Facebooku
+                    </a>
+                </div>
+            </div>
+
+            <br>
+
             @include('partials.errorslist')
 
+            {{--
             <form method="POST" action="{{ action('Auth\AuthController@postLogin') }}">
                 {!! csrf_field() !!}
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" name="email" value="{{ old('email') }}" class="form-control">
+                    <input type="text" name="email" value="{{ old('email') }}" class="form-control" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Heslo</label>
-                    <input type="password" name="password" id="password" class="form-control">
+                    <input type="password" name="password" id="password" class="form-control" required>
                 </div>
 
                 <div class="form-group">
@@ -38,6 +50,8 @@
                     </div>
                 </div>
             </form>
+            --}}
+
         </div>
     </div>
 

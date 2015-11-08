@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use App\Http\Tools\Flash;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -23,7 +26,13 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
+    /**
+     * @var string
+     */
     protected $redirectPath = '/';
+    /**
+     * @var string
+     */
     protected $redirectTo = '/';
 
     /**
@@ -45,7 +54,7 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -64,5 +73,75 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param Flash $flash
+     * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     */
+    public function postLogin(Request $request, Flash $flash)
+    {
+        $this->validate($request, [
+            $this->loginUsername() => 'required', 'password' => 'required',
+        ]);
+
+        // If the class is using the ThrottlesLogins trait, we can automatically throttle
+        // the login attempts for this application. We'll key this by the username and
+        // the IP address of the client making these requests into this application.
+        $throttles = $this->isUsingThrottlesLoginsTrait();
+
+        if ($throttles && $this->hasTooManyLoginAttempts($request)) {
+            return $this->sendLockoutResponse($request);
+        }
+
+        $credentialsViaEmail = $this->getCredentials($request);
+        $credentialsViaName = $this->getCredentialsViaName($request);
+
+        if (Auth::attempt($credentialsViaEmail, $request->has('remember')) || Auth::attempt($credentialsViaName, $request->has('remember'))) {
+            $flash->success('Vítejte!', 'Byli jste úspešně přihlášeni.');
+            return $this->handleUserWasAuthenticated($request, $throttles);
+        }
+
+        // If the login attempt was unsuccessful we will increment the number of attempts
+        // to login and redirect the user back to the login form. Of course, when this
+        // user surpasses their maximum number of attempts they will get locked out.
+        if ($throttles) {
+            $this->incrementLoginAttempts($request);
+        }
+
+        return redirect($this->loginPath())
+            ->withInput($request->only($this->loginUsername(), 'remember'))
+            ->withErrors([
+                $this->loginUsername() => $this->getFailedLoginMessage(),
+            ]);
+    }
+
+    /**
+     * @param Flash $flash
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function getLogout(Flash $flash)
+    {
+        if(\Auth::check())
+        {
+            $flash->success('Nashledanou!', 'Odhlášení proběhlo úspěšně.');
+        }
+
+        Auth::logout();
+
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    protected function getCredentialsViaName(Request $request)
+    {
+        return [
+            'name' => $request->get('email'),
+            'password' => $request->get('password'),
+        ];
     }
 }

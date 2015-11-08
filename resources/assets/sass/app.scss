@@ -1,10 +1,5 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-.main-title {
-  text-align: center;
-  margin: 40px 0;
-}
-
 #three-column #tbox1 {
   width: 50% !important;
 }
@@ -13,8 +8,30 @@
   width: 50% !important;
 }
 
+#map {
+  min-height: 500px;
+}
+
+#logo {
+  padding: 5em 0em 2em 0em !important;
+}
+
+.main-title {
+  text-align: center;
+  margin: 40px 0;
+}
+
 .section-menu {
   margin: 30px auto;
   text-align: center;
   font-size: large;
+}
+
+.social-btn:hover {
+  color: white !important;
+}
+
+.dropzone-sapaguide {
+  border-radius: 10px;
+  border-style: dashed !important;
 }

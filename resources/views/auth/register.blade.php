@@ -41,6 +41,7 @@
                         <button type="submit" class="form-control btn btn-success">Zaregistrovat se</button>
                 </div>
             </form>
+
         </div>
     </div>
 

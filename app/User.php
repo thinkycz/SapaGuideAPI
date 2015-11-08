@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'facebook_id', 'twitter_id', 'google_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -40,5 +40,37 @@ class User extends Model implements AuthenticatableContract,
     public function location()
     {
         return $this->hasMany('App\Location');
+    }
+
+    public static function findUserByID($oauth_provider, $oauth_id)
+    {
+        $user = User::where($oauth_provider . '_id', $oauth_id)->first();
+
+        if(!$user) return null;
+
+        return $user;
+    }
+
+    public static function createOAuthUser($oauth_provider, $oauth_id, $username, $email)
+    {
+        $user = User::create([
+            'email' => $email,
+            'name'  => $username,
+            $oauth_provider . '_id' => $oauth_id,
+        ]);
+
+        return $user;
+    }
+
+    public static function findUserByIDOrCreate($oauth_provider, $oauth_id, $username, $email)
+    {
+        $user = User::findUserByID($oauth_provider, $oauth_id);
+
+        if(!$user)
+        {
+            $user = User::createOAuthUser($oauth_provider, $oauth_id, $username, $email);
+        }
+
+        return $user;
     }
 }

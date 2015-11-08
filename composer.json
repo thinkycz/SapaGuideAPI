@@ -9,7 +9,9 @@
         "laravel/framework": "5.1.*",
         "barryvdh/laravel-ide-helper": "v2.1.0",
         "twitter/bootstrap": "v3.3.5",
-        "components/jquery": "2.1.4"
+        "components/jquery": "2.1.4",
+        "cviebrock/eloquent-sluggable": "3.1.1",
+        "laravel/socialite": "v2.0.14"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

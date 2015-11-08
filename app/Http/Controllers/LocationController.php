@@ -2,18 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AddLocationStep2FormRequest;
-use App\Http\Tools\Flash;
+use App;
 use App\Location;
 use Carbon\Carbon;
 use App\Http\Requests;
+use App\Http\Tools\Flash;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\AddLocationFormRequest;
+use App\Http\Requests\AddLocationStep2FormRequest;
+use Illuminate\Support\Facades\Redirect;
 
 class LocationController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['index',  'show']
+        ]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -46,14 +55,14 @@ class LocationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  AddLocationStep2FormRequest  $request
      * @return Response
      */
     public function store(AddLocationStep2FormRequest $request, Flash $flash)
     {
         \Auth::user()->location()->create($request->all());
 
-        $flash->success('Dekujeme!', 'Vas zaznam byl odeslan ke zpracovani.');
+        $flash->success('Děkujeme!', 'Váš záznam byl odeslán ke zpracování.');
 
         return \Redirect::action('LocationController@index');
     }
@@ -66,7 +75,7 @@ class LocationController extends Controller
      */
     public function show($id)
     {
-        $location = Location::find($id);
+        $location = Location::findBySlugOrIdOrFail($id);
 
         return view('location.show', compact('location'));
     }
@@ -79,7 +88,8 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        return view('location.edit');
+        $location = Location::findBySlugOrIdOrFail($id);
+        return view('location.edit', compact('location'));
     }
 
     /**
@@ -100,8 +110,20 @@ class LocationController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id, Flash $flash)
     {
-        //
+        $location = Location::findBySlugOrId($id);
+
+        if($location)
+        {
+            $location->delete();
+            $flash->success('Smazáno!', 'Váš záznam byl úspěšně smazán.');
+            return Response::create(['result' => 'success'], 200);
+        }
+        else
+        {
+            $flash->error('Chyba!', 'Při pokusu o smazání nastala chyba.');
+            return Response::create(['result' => 'error'], 500);
+        }
     }
 }

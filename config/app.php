@@ -149,6 +149,9 @@ return [
          * Custom
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        App\Providers\ToolsServiceProvider::class,
 
     ],
 
@@ -198,6 +201,7 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

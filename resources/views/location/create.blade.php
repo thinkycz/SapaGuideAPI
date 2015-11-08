@@ -16,7 +16,7 @@
 
             @include('partials.errorslist')
 
-            <form method="get" action="{{ action('LocationController@create2') }}">
+            <form method="get" action="{{ action('LocationController@create2') }}" class="form-horizontal">
                 <div class="form-group">
                     <label for="title">Název: <span class="small text-danger">(povinné)</span></label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Jak se toto místo jmenuje?" value="{{ Input::old('title') }}" required>
@@ -41,8 +41,6 @@
                 </div>
             </form>
         </div>
-
-
     </div>
 
 @stop

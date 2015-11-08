@@ -14,12 +14,13 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->rememberToken();
             $table->timestamps();
-            $table->boolean('isAdmin')->default(false);
+            $table->boolean('is_admin')->default(false);
+            $table->string('facebook_id')->nullable();
         });
     }
 

@@ -35,4 +35,22 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '536716046490752',
+        'client_secret' => 'c84b53fa7ca8e2cec9969e74755ea0b9',
+        'redirect' => 'http://localhost:8888/SapaGuideAPI/public/auth/facebook/callback',
+    ],
+
+    'twitter' => [
+        'client_id' => 'RXdShCkp5nmak7KyL8Q43VM22',
+        'client_secret' => 'jNxFzRsDQC1rckaoGVbUbp7TuE5x3mROtODd28rDPs1u3l3RIy',
+        'redirect' => 'http://localhost:8888/SapaGuideAPI/public/auth/twitter/callback',
+    ],
+
+    'google' => [
+        'client_id' => '536716046490752',
+        'client_secret' => 'c84b53fa7ca8e2cec9969e74755ea0b9',
+        'redirect' => 'http://localhost:8888/SapaGuideAPI/public/auth/google/callback',
+    ],
+
 ];

@@ -22,7 +22,7 @@ Route::get('/account', 'StaticController@myAccountPage');
 /**
  * Locations
  */
-Route::get('/location/create2', 'LocationController@create2');
+Route::get('/location/create2', 'LocationController@create2')->name('location.create2');
 Route::resource('/location', 'LocationController');
 
 /**
@@ -37,3 +37,15 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+/**
+ * OAuth
+ */
+Route::get('auth/facebook', 'Auth\OAuthController@redirectToFacebook');
+Route::get('auth/facebook/callback', 'Auth\OAuthController@handleFacebookCallback');
+Route::get('auth/twitter', 'Auth\OAuthController@redirectToTwitter');
+Route::get('auth/twitter/callback', 'Auth\OAuthController@handleTwitterCallback');
+Route::get('auth/google', 'Auth\OAuthController@redirectToGoogle');
+Route::get('auth/google/callback', 'Auth\OAuthController@handleGoogleCallback');
+Route::get('auth/oauth/finish', 'Auth\OAuthController@getFinish');
+Route::post('auth/oauth/register', 'Auth\OAuthController@finishOAuthRegistration');

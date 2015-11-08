@@ -44,23 +44,23 @@
                 <table class="table">
                     <tr>
                         <td>Počet schválených lokací:</td>
-                        <td>{{ Auth::user()->id }}</td>
+                        <td>{{ Auth::user()->location()->where('approved', 1)->count() }} (zobrazit)</td>
                     </tr>
                     <tr>
                         <td>Počet lokací čekajících ke schválení:</td>
-                        <td>{{ Auth::user()->id }}</td>
+                        <td>{{ Auth::user()->location()->where('approved', 0)->count() }} (zobrazit)</td>
                     </tr>
                     <tr>
                         <td>Počet neschválených lokací:</td>
-                        <td>{{ Auth::user()->id }}</td>
+                        <td>{{ Auth::user()->location()->where('approved', -1)->count() }} (zobrazit)</td>
                     </tr>
                     <tr>
                         <td>Počet hodnocení:</td>
-                        <td>{{ Auth::user()->name }}</td>
+                        <td>{{ Auth::user()->id }} (zobrazit)</td>
                     </tr>
                     <tr>
                         <td>Počet nahraných obrázků:</td>
-                        <td>{{ Auth::user()->email }}</td>
+                        <td>{{ Auth::user()->id }}</td>
                     </tr>
                 </table>
             </div>
