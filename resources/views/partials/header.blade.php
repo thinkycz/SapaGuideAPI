@@ -1,11 +1,10 @@
-<div id="header-wrapper">
-    <div id="header" class="container">
-        <div id="logo">
-            <span class="icon icon-cog"></span>
-            <h1><a href="#">Sapa Katalog</a></h1>
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ action('StaticController@indexPage') }}">Sapa Guide</a>
         </div>
-        <div id="menu">
-            <ul>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
                 <li class="{{ Request::url() == action('StaticController@indexPage') ? "active" : ""}}">
                     <a href="{{ action('StaticController@indexPage') }}" accesskey="1" title="Domů">Domů</a>
                 </li>
@@ -15,19 +14,21 @@
                 <li class="{{ Request::url() == action('StaticController@downloadPage') ? "active" : ""}}">
                     <a href="{{ action('StaticController@downloadPage') }}" accesskey="3" title="Stáhnout aplikaci">Stáhnout aplikaci</a>
                 </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 @if(Auth::guest())
                     <li class="{{ Request::url() == action('Auth\AuthController@getLogin') ? "active" : ""}}">
                         <a href="{{ action('Auth\AuthController@getLogin') }}" accesskey="4" title="Přihlásit se">Přihlásit se</a>
                     </li>
                 @else
                     <li class="{{ Request::url() == action('StaticController@myAccountPage') ? "active" : ""}}">
-                        <a href="{{ action('StaticController@myAccountPage') }}" accesskey="5" title="Můj účet">Můj účet ({{ Auth::getUser()->name }})</a>
+                        <a href="{{ action('StaticController@myAccountPage') }}" accesskey="5" title="Můj účet">{{ Auth::getUser()->name }}</a>
                     </li>
                     <li class="{{ Request::url() == action('Auth\AuthController@getLogout') ? "active" : ""}}">
                         <a href="{{ action('Auth\AuthController@getLogout') }}" accesskey="6" title="Odhlásit se">Odhlásit se</a>
                     </li>
                 @endif
             </ul>
-        </div>
+        </div><!--/.nav-collapse -->
     </div>
-</div>
+</nav>

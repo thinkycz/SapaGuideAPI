@@ -38,7 +38,7 @@ return [
     'facebook' => [
         'client_id' => '536716046490752',
         'client_secret' => 'c84b53fa7ca8e2cec9969e74755ea0b9',
-        'redirect' => 'http://localhost:8888/SapaGuideAPI/public/auth/facebook/callback',
+        'redirect' => 'http://sapaguide.dev/auth/facebook/callback',
     ],
 
     'twitter' => [

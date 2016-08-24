@@ -2,17 +2,18 @@
 
 @section('body')
 
-    <div class="wrapper">
-
+    <div class="text-center">
         <h2 class="main-title">Přidání lokace do databáze - krok 1/2</h2>
+    </div>
 
-        <div class="section-menu">
-            <a href="" title="">Jak zjistím zeměpisné souřadnice?</a>
-        </div>
+    <div class="section-menu">
+        <a href="" title="">Jak zjistím zeměpisné souřadnice?</a>
+    </div>
 
-        <div class="col-md-3"></div>
+    <hr>
 
-        <div class="col-md-6">
+    <div class="row">
+        <div class="col-md-12">
 
             @include('partials.errorslist')
 
@@ -42,5 +43,4 @@
             </form>
         </div>
     </div>
-
 @stop

@@ -4,8 +4,8 @@
     <data-source name="MySQL - SapaGuideAPI@localhost" uuid="cd7e632f-39a5-4162-ac1d-3c55ccca7d59">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <schema-pattern>SapaGuideAPI.*</schema-pattern>
-      <default-schemas>SapaGuideAPI.*</default-schemas>
+      <introspection-scope>SapaGuideAPI:*</introspection-scope>
+      <resolve-scope>SapaGuideAPI:*</resolve-scope>
     </data-source>
   </component>
 </project>

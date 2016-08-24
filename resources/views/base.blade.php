@@ -3,21 +3,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>@yield('title', 'Sapa Katalog')</title>
+    <title>@yield('title', 'Sapa Guide')</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Quicksand:400,700|Questrial" rel="stylesheet" />
     <link href="{{ asset('css/all.css') }}" rel="stylesheet" type="text/css" media="all" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.css" rel="stylesheet" type="text/css" media="all" />
     <script type="text/javascript" src="{{ asset('js/all.js') }}"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    @include('partials.cdn')
     @yield('scripts')
 </head>
 <body>
 @include('partials.header')
 
-@yield('body')
+<div class="container">
+    @yield('body')
+</div>
 
 @include('partials.footer')
 

@@ -5,13 +5,11 @@ namespace App\Http\Controllers;
 use App;
 use App\Location;
 use Carbon\Carbon;
-use App\Http\Requests;
 use App\Http\Tools\Flash;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests\AddLocationFormRequest;
 use App\Http\Requests\AddLocationStep2FormRequest;
-use Illuminate\Support\Facades\Redirect;
 
 class LocationController extends Controller
 {
@@ -32,7 +30,7 @@ class LocationController extends Controller
     {
         Carbon::setLocale('cs');
 
-        $locations = Location::all();
+        $locations = Location::all()->sortByDesc('created_at');
 
         return view('location.index', compact('locations'));
     }
@@ -108,7 +106,7 @@ class LocationController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return Response|\Symfony\Component\HttpFoundation\Response
      */
     public function destroy($id, Flash $flash)
     {
