@@ -25,9 +25,6 @@ Route::get('/account', 'StaticController@myAccountPage');
 Route::get('/location/create2', 'LocationController@create2')->name('location.create2');
 Route::resource('/location', 'LocationController');
 
-/**
- * API - TO DO
- */
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

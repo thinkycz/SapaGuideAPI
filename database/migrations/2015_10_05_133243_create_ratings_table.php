@@ -17,7 +17,7 @@ class CreateRatingsTable extends Migration
             $table->timestamps();
 
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->integer('rating');
 
             $table->unsignedInteger('user_id')->nullable();

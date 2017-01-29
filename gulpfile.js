@@ -17,8 +17,9 @@ elixir(function(mix) {
     mix.copy('vendor/components/jquery/jquery.min.js', 'resources/assets/js/jquery.min.js');
     mix.copy('vendor/twitter/bootstrap/dist/css/bootstrap.min.css', 'resources/assets/css/bootstrap.min.css');
     mix.copy('vendor/twitter/bootstrap/dist/js/bootstrap.min.js', 'resources/assets/js/bootstrap.min.js');
-    mix.copy('vendor/twitter/bootstrap/dist/fonts', 'public/css/fonts');
-    mix.copy('resources/assets/css/fonts', 'public/css/fonts');
+    mix.copy('vendor/twitter/bootstrap/dist/fonts', 'resources/assets/css/fonts');
+    mix.copy('resources/assets/css/fonts', 'public/fonts');
+    mix.copy('resources/assets/images', 'public/images');
 
     mix.stylesIn('resources/assets/css');
 

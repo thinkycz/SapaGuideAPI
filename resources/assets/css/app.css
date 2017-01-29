@@ -1,10 +1,15 @@
+@media (min-width: 1200px) {
+  .container {
+    width: 1000px !important;
+  }
+}
+
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
 
@@ -12,15 +17,37 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #f5f5f5;
 }
 
-.container .text-muted {
+.main-header > .container .navbar-brand {
+  padding: 0;
+  margin-top: 5px;
+  margin-left: 0 !important;
+}
+
+.main-header > .container .navbar-brand img {
+  max-height: 50px;
+}
+
+.navbar.main-header {
+  margin: 10px 0;
+}
+
+.navbar.main-header .navbar-nav > li > a {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.main-menu {
+  background-color: #f1f1f1;
+}
+
+.copyright {
   margin: 20px 0;
 }
 
-#map {
-  height: 400px;
+.searchbar {
+  margin: 15px 15px 0;
 }
