@@ -19,11 +19,9 @@ class CreateCategoriesTable extends Migration
             $table->string('title');
             $table->text('description');
 
+            // Foreign keys
             $table->unsignedInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
-
             $table->unsignedInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('set null');
         });
     }
 

@@ -44,6 +44,35 @@ body {
   background-color: #f1f1f1;
 }
 
+.main-footer {
+  background-color: #f1f1f1;
+}
+
+.location-subtitle {
+  margin: 0 20px;
+}
+
+.location-content {
+  margin: 2em 0;
+  padding: 0 8em;
+}
+
+.location-content .location-tabs {
+  margin-top: 2em;
+}
+
+.panel.with-nav-tabs .panel-heading {
+  padding: 5px 5px 0 5px;
+}
+
+.panel.with-nav-tabs .nav-tabs {
+  border-bottom: none;
+}
+
+.panel.with-nav-tabs .nav-justified {
+  margin-bottom: -1px;
+}
+
 .copyright {
   margin: 20px 0;
 }
